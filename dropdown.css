@@ -1,0 +1,27 @@
+.dropdown-head {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  z-index: 1;
+  overflow: auto;
+  height: 20vh;
+}
+.dropdown-head:hover .dropdown-content, .dropdown-head:focus .dropdown-content {
+  display: block;
+}
+
+div.dropdown-head ul li a, div.dropdown-head a {
+  text-decoration: none;
+  color: #020202;
+}
+div.dropdown-head ul li a:hover {
+  color: #ee0202;
+}
