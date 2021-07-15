@@ -1,4 +1,5 @@
 const div = document.querySelector("#view");
+const nav = document.querySelector("#nav")
 const dataurl = ["https://api.covidactnow.org/v2/states.json?apiKey=", "7c2276fd308c4b07b03eaa7f63b44ff7"];
 
 // let title, a, b, c, stateDiv, states;
@@ -10,8 +11,6 @@ const makeaLI = function(text, info) {
     return output;
 };
 
-var lang = document.createElement('div'); // Different formatting/language
-
 fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
     console.log(data);
 
@@ -21,6 +20,8 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
     title.innerHTML = `<a href=\'#view\'>States</a><span style='font-size: small;'> - Last Refreshed on ${data[0].lastUpdatedDate}</span>`;
     title.classList.add('dropdown-head');
     a.classList.add('dropdown-content');
+
+    title.setAttribute('style', 'background: var(--bg1); padding: 5px; border-radius: 2px; -webkit-border-radius: 2px;')
 
     data.forEach(element => {
         b = document.createElement('li');
