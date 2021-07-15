@@ -24,3 +24,10 @@ ul.nav li a {
 ul.nav li a:hover {
   background-color: #111;
 }
+
+div.bar {
+    background: var(--ac1);
+    height: 1px;
+    top: 4.4%;
+    position: sticky;
+}
