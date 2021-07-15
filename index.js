@@ -44,7 +44,6 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
             e = document.createElement('span');
             information = document.createElement('ul');
             
-
             stateDiv.id = element.state;
             d.innerHTML = `<a href='${element.url}'>${element.state}</a>`;
             e.innerText = '  ' + stateCodes[element.state];
