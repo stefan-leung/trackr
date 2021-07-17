@@ -23,7 +23,7 @@ function getUrlParam(parameter, defaultvalue) {
     var urlparameter = defaultvalue;
     if(window.location.href.indexOf(parameter) > -1) {
         urlparameter = getUrlVars()[parameter];
-        }
+        };
     return urlparameter;
 };
 
@@ -105,9 +105,9 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
             div.appendChild(states);
         });
     } else if(run === 1) {
-        console.log(stateData)
-        let a = document.createElement('p')
-        a.innerText = JSON.stringify(stateData)
-        div.appendChild(a)
+        console.log(stateData);
+        let a = document.createElement('p');
+        a.innerText = JSON.stringify(stateData);
+        div.appendChild(a);
     };
 });
