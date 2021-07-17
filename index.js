@@ -2,7 +2,6 @@ const div = document.querySelector("#view");
 const nav = document.querySelector("#nav")
 const dataurl = ["https://api.covidactnow.org/v2/states.json?apiKey=", "7c2276fd308c4b07b03eaa7f63b44ff7"];
 
-var run = 0
 let stateList = []
 states = document.createElement('div');
 
@@ -12,9 +11,17 @@ function makeaLI(text, info) {
     return output;
 };
 
-function getUrlParam(parameter, defaultvalue){
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getUrlParam(parameter, defaultvalue) {
     var urlparameter = defaultvalue;
-    if(window.location.href.indexOf(parameter) > -1){
+    if(window.location.href.indexOf(parameter) > -1) {
         urlparameter = getUrlVars()[parameter];
         }
     return urlparameter;
@@ -24,16 +31,17 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
     console.log(data);
 
     data.forEach(element => {
-        stateList.add(element.state)
+        stateList.push(element.state);
     });
 
-    try {
-        if 
-    } catch (error) {
-        
-    };
+    if(stateList.indexOf(getUrlParam('state', false)) >= 0) {
+        data.forEach(element => { if(element.state == getUrlParam('state', 'false')) {
+            window.stateData = element;
+            window.run = 1
+        }});
+    } else { window.run = 0 };
 
-    if(run == 0) {
+    if(run === 0) {
         title = document.createElement('div');
         a = document.createElement('ul');
 
@@ -95,5 +103,10 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
             });
             div.appendChild(states);
         });
-};
+    } else if(run === 1) {
+        console.log(stateData)
+        let a = document.createElement('p')
+        a.innerText = JSON.stringify(stateData)
+        div.appendChild(a)
+    };
 });
