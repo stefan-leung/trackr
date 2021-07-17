@@ -38,6 +38,7 @@ fetch(dataurl[0] + dataurl[1]).then((res) => res.json()).then(data => {
         data.forEach(element => { if(element.state == getUrlParam('state', 'false')) {
             window.stateData = element;
             window.run = 1
+            document.getElementsByTagName('title')[0].innerText = `CA - COVID-19 Statistics`
         }});
     } else { window.run = 0 };
 
